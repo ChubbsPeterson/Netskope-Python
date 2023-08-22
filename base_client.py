@@ -22,8 +22,13 @@ class BaseClient:
         """
         Helper function to handle response and errors.
         """
-        if response and isinstance(response, dict) and 'error' not in response:
+        if response and isinstance(response, dict) and 'error' not in response and response['status'] == 'error':
+            print(f"{EMOJI_RED}  Error in response. JSON: {response}")
             return response
+        
+        elif response and isinstance(response, dict) and 'error' not in response:
+            return response
+        
         else:
             return {'message': "Unexpected response format or error occurred.", 'status': 'error'}
 
