@@ -34,33 +34,35 @@ services_client = Services(base_url=BASE_URL, auth_token=AUTH_TOKEN)
 """
 Steering Client Endpoint Testing
 """
-#steering_client.get_gre_pops(display_output=True) # Get all GRE POPs
-#steering_client.get_gre_pop(id, display_output=True) # Get a specific GRE POP by ID, ex. 0X00D3
-#steering_client.get_gre_tunnels(display_output=True) # Get GRE tunnels list
-#steering_client.create_gre_tunnel(data, display_output=True) # Create GRE tunnel <---payload---> {"site":"string","srcipidentity":"string","pops":["string"],"vendor":"string","template":"string","sourcetype":"string","notes":"string","enable":true,"options":{"xff":{"enable":false,"iplist":["string"]}}}
-#steering_client.get_ipsec_pops(display_output=True) # Get IPSec points of presence(POPs) list
-#steering_client.get_private_apps(display_output=True) # Get list of private applications
-#steering_client.get_private_app_tags(display_output=True) # Get list of private app tags
-#steering_client.get_private_app_tag(tag_id, display_output=True) # Get a private app tag based on tag id
-#steering_client.create_ipsec_tunnel(data, display_output=True) # Create IPSec tunnel
-#steering_client.get_ipsec_tunnels(display_output=True) # Get IPSec tunnel
-#steering_client.get_ipsec_tunnel(id, display_output=True) # Get IPSec tunnel
-#steering_client.update_ipsec_tunnel(id, data, display_output=True) # Update IPSec tunnel
-#steering_client.delete_ipsec_tunnel(id, display_output=True) # Delete IPSec tunnel
-#steering_client.create_private_app(data, display_output=True) # Create a private application
-#steering_client.delete_private_app(private_app_id, display_output=True) # Delete a private application
-#steering_client.update_private_app(private_app_id, data, display_output=True) # Update a private application
-#steering_client.patch_private_app(private_app_id, data, display_output=True) # Patch a private application
-#steering_client.get_private_app(private_app_id, display_output=True) # Get a private application
-#steering_client.retrieve_policy_in_use_for_private_apps(data, display_output=True) # Retrieve number of policy in use for specified private apps <---payload---> { "ids": [ "string" ] }  !!!! (actually int)
-#steering_client.create_tags_for_private_apps(data, display_output=True) # Bulk update tags to associate with specified private apps
-#steering_client.bulk_update_tags_for_private_apps(data, display_output=True) # Bulk update tags to associate with specified private apps
-#steering_client.bulk_delete_tags_for_private_apps(data, display_output=True) # Bulk delete tags for specified private apps
-#steering_client.get_list_of_private_app_tags(display_output=True) # Get list of private app tags
-#steering_client.get_private_app_tag_based_on_id(tag_id, display_output=True) # Get a private app tag based on tag id
-#steering_client.update_private_app_tag_based_on_id(tag_id, data, display_output=True) # Update a private app tag based on tag id
-#steering_client.delete_private_app_tag_based_on_id(tag_id, display_output=True) # Delete a private app tag based on tag id
-#steering_client.retrieve_policy_in_use_for_tags(data, display_output=True) # Retrieve number of policy in use for specified tags
+#steering_client.get_gre_pops(display_output=False) # Get all GRE POPs
+#steering_client.get_gre_pop(id, display_output=False) # Get a specific GRE POP by ID, ex. 0X00D3
+#steering_client.get_gre_tunnels(display_output=False) # Get GRE tunnels list
+#steering_client.create_gre_tunnel(data, display_output=False) # Create GRE tunnel <---payload---> {"site":"string","srcipidentity":"string","pops":["string"],"vendor":"string","template":"string","sourcetype":"string","notes":"string","enable":true,"options":{"xff":{"enable":false,"iplist":["string"]}}}
+#steering_client.get_gre_tunnel(id, display_output=False) # Get GRE tunnel
+#steering_client.update_gre_tunnel(id, data, display_output=False) # Update GRE tunnel <---payload ---> { "status": 200, "result": "string", "data": [ { "id": 1, "site": "string", "vendor": "string", "template": "string", "sourcetype": "string", "notes": "string", "srcipidentity": "string", "pops": [ { "name": "string", "gateway": "string", "probeip": "string", "primary": true, "usertrafficStatus": "string", "usertrafficLast": "string", "keepaliveStatus": "string", "keepaliveLast": "string", "throughput": "string" } ], "enabled": true, "options": { "xff": { "enabled": false, "iplist": [ "string" ] } }, "version": 2 } ] }
+#steering_client.delete_gre_tunnel(id, display_output=False) # Delete GRE tunnel
+#steering_client.get_ipsec_pops(display_output=False) # Get IPSec points of presence(POPs) list
+#steering_client.get_ipsec_pop(id, display_output=False) # Get IPSec points of presence(POPs) list
+#steering_client.get_ipsec_tunnels(display_output=False) # Get IPSec tunnels
+#steering_client.create_ipsec_tunnel(data, display_output=False) # Create IPSec tunnel
+#steering_client.get_ipsec_tunnel(id, display_output=False) # Get specific IPSec tunnel
+#steering_client.update_ipsec_tunnel(id, data, display_output=False) # Update IPSec tunnel
+#steering_client.delete_ipsec_tunnel(id, display_output=False) # Delete IPSec tunnel
+#steering_client.get_private_apps(display_output=False) # Get list of private applications
+#steering_client.create_private_app(data, display_output=False) # Create a private application
+#steering_client.delete_private_app(private_app_id, display_output=False)  # Delete a private application
+#steering_client.update_private_app(private_app_id, data, display_output=False) # Update a private application
+#steering_client.patch_private_app(private_app_id, data, display_output=False) # Patch a private application
+#steering_client.get_private_app(private_app_id, display_output=False) # Get a private application
+#steering_client.retrieve_policy_in_use_for_private_apps(data, display_output=False)  # Retrieve number of policy in use for specified private apps <---payload---> { "ids": [ "string" ] }  !!!! (actually int)
+#steering_client.create_tags_for_private_apps(data, display_output=False) # Bulk create tags to associate with specified private apps
+#steering_client.bulk_update_tags_for_private_apps(data, display_output=False) # Bulk update tags to associate with specified private apps
+#steering_client.bulk_delete_tags_for_private_apps(data, display_output=False) # Bulk delete tags for specified private apps
+#steering_client.get_list_of_private_app_tags(display_output=False) # Get list of private app tags
+#steering_client.get_private_app_tag(tag_id, display_output=False) # Get a private app tag based on tag id
+#steering_client.update_private_app_tag_based_on_id(tag_id, data, display_output=False) # Update a private app tag based on tag id
+#steering_client.delete_private_app_tag_based_on_id(tag_id, display_output=False) # Delete a private app tag based on tag id
+#steering_client.retrieve_policy_in_use_for_tags(data, display_output=False) # Retrieve number of policy in use for specified tags
 
 """
 ATP Endpoint Testing

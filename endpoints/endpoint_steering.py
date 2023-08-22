@@ -42,6 +42,30 @@ class Steering(BaseClient):
         response = self.post(endpoint, data=data, display_output=display_output)
         return self._handle_response(response)
 
+    def get_gre_tunnel(self, id, display_output=False):
+        """
+        Get GRE tunnel
+        """
+        endpoint = f"steering/gre/tunnels/{id}"
+        response = self.get(endpoint, display_output=display_output)
+        return self._handle_response(response)
+
+    def update_gre_tunnel(self, id, data, display_output=False):
+        """
+        Update GRE tunnel
+        """
+        endpoint = f"steering/gre/tunnels/{id}"
+        response = self.patch(endpoint, data=data, display_output=display_output)
+        return self._handle_response(response)
+
+    def delete_gre_tunnel(self, id, display_output=False):
+        """
+        Delete GRE tunnel
+        """
+        endpoint = f"steering/gre/tunnels/{id}"
+        response = self.delete(endpoint, display_output=display_output)
+        return self._handle_response(response)
+
     def get_ipsec_pops(self, display_output=False):
         """
         Get IPSec points of presence(POPs) list
@@ -50,27 +74,19 @@ class Steering(BaseClient):
         response = self.get(endpoint, display_output=display_output)
         return self._handle_response(response)
 
-    def get_private_apps(self, display_output=False):
+    def get_ipsec_pop(self, id, display_output=False):
         """
-        Get list of private applications
+        Get GRE point of presence(POP)
         """
-        endpoint = "steering/apps/private"
+        endpoint = f"steering/ipsec/pops/{id}"
         response = self.get(endpoint, display_output=display_output)
         return self._handle_response(response)
 
-    def get_private_app_tags(self, display_output=False):
+    def get_ipsec_tunnels(self, display_output=False):
         """
-        Get list of private app tags
+        Get IPSec tunnel
         """
-        endpoint = "steering/apps/private/tags"
-        response = self.get(endpoint, display_output=display_output)
-        return self._handle_response(response)
-
-    def get_private_app_tag(self, tag_id, display_output=False):
-        """
-        Get a private app tag based on tag id
-        """
-        endpoint = f"steering/apps/private/tags/{tag_id}"
+        endpoint = f"steering/ipsec/tunnels"
         response = self.get(endpoint, display_output=display_output)
         return self._handle_response(response)
 
@@ -80,14 +96,6 @@ class Steering(BaseClient):
         """
         endpoint = "steering/ipsec/tunnels"
         response = self.post(endpoint, data=data, display_output=display_output)
-        return self._handle_response(response)
-
-    def get_ipsec_tunnels(self, display_output=False):
-        """
-        Get IPSec tunnel
-        """
-        endpoint = f"steering/ipsec/tunnels"
-        response = self.get(endpoint, display_output=display_output)
         return self._handle_response(response)
 
     def get_ipsec_tunnel(self, id, display_output=False):
@@ -112,6 +120,14 @@ class Steering(BaseClient):
         """
         endpoint = f"steering/ipsec/tunnels/{id}"
         response = self.delete(endpoint, display_output=display_output)
+        return self._handle_response(response)
+
+    def get_private_apps(self, display_output=False):
+        """
+        Get list of private applications
+        """
+        endpoint = "steering/apps/private"
+        response = self.get(endpoint, display_output=display_output)
         return self._handle_response(response)
 
     def create_private_app(self, data, display_output=False):
@@ -194,7 +210,7 @@ class Steering(BaseClient):
         response = self.get(endpoint, display_output=display_output)
         return self._handle_response(response)
 
-    def get_private_app_tag_based_on_id(self, tag_id, display_output=False):
+    def get_private_app_tag(self, tag_id, display_output=False):
         """
         Get a private app tag based on tag id
         """
