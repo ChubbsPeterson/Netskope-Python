@@ -33,14 +33,6 @@ class Services(BaseClient):
         response = self.get(endpoint, display_output=display_output)
         return self._handle_response(response)
 
-    def get_bandwidth_control_traffic_class(self, class_id, display_output=False):
-        """
-        Get bandwidth control traffic class
-        """
-        endpoint = f"services/bandwidthcontrol/trafficclasses/{class_id}"
-        response = self.get(endpoint, display_output=display_output)
-        return self._handle_response(response)
-
     def create_cci_tags(self, data, display_output=False):
         """
         Creates new tag and associate the same to the list of applications/ids.
@@ -89,7 +81,21 @@ class Services(BaseClient):
         response = self.patch(endpoint, json=data, display_output=display_output)
         return self._handle_response(response)
 
-    # ... and so on ...
+    def delete_bandwidth_links(self, data, display_output=False):
+        """
+        Update bandwidth control links.
+        """
+        endpoint = "services/bandwidthcontrol/links/deletelinks"
+        response = self.post(endpoint, json=data, display_output=display_output)
+        return self._handle_response(response)
+
+    def get_bandwidth_links(self, data, display_output=False):
+        """
+        Update bandwidth control links.
+        """
+        endpoint = "services/bandwidthcontrol/links/getlinks"
+        response = self.post(endpoint, json=data, display_output=display_output)
+        return self._handle_response(response)
 
     def get_bandwidth_control_link(self, link_id, display_output=False):
         """
