@@ -32,7 +32,7 @@ class BaseClient:
         else:
             return {'message': "Unexpected response format or error occurred.", 'status': 'error'}
 
-    def _request(self, method, endpoint, **kwargs):
+    def _request(self, method, endpoint, headers=None, **kwargs):
         """
         Unified request method.
         :param method: HTTP verb like GET, POST, etc.
@@ -43,7 +43,9 @@ class BaseClient:
         try:
             display_output = kwargs.pop('display_output', False)
 
-            response = self.session.request(method, self._url(endpoint), headers=self.headers, **kwargs)
+            headers = headers or self.headers
+
+            response = self.session.request(method, self._url(endpoint), headers=headers, **kwargs)
             response.raise_for_status()
             json_response = response.json()
 
@@ -61,17 +63,17 @@ class BaseClient:
             print(f"{EMOJI_RED} Error on {method.upper()} request: {e}")
             return None
 
-    def get(self, endpoint, params=None, display_output=False):
-        return self._request('GET', endpoint, params=params, display_output=display_output)
+    def get(self, endpoint, params=None, headers=None, display_output=False):
+        return self._request('GET', endpoint, headers=headers, params=params, display_output=display_output)
 
-    def post(self, endpoint, data=None, display_output=False):
-        return self._request('POST', endpoint, json=data, display_output=display_output)
+    def post(self, endpoint, data=None, headers=None, files=None, display_output=False):
+        return self._request('POST', endpoint, headers=headers, json=data, files=files, display_output=display_output)
 
-    def put(self, endpoint, data=None, display_output=False):
-        return self._request('PUT', endpoint, json=data, display_output=display_output)
+    def put(self, endpoint, data=None, headers=None, display_output=False):
+        return self._request('PUT', endpoint, headers=headers, json=data, display_output=display_output)
 
     def delete(self, endpoint, display_output=False):
         return self._request('DELETE', endpoint, display_output=display_output)
 
-    def patch(self, endpoint, data=None, display_output=False):
-        return self._request('PATCH', endpoint, json=data, display_output=display_output)
+    def patch(self, endpoint, data=None, headers=None, display_output=False):
+        return self._request('PATCH', endpoint, headers=headers, json=data, display_output=display_output)

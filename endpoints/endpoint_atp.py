@@ -13,11 +13,10 @@ class ATP(BaseClient):
         """
         API to submit a file for scan by Netskope sandbox(supported file types: .exe, file size: up to 16MB, up to 1000 files per day).
         """
-        endpoint = "atp/scans/filescan"
-        params = {'scantype': 'sandbox'}
+        endpoint = "atp/scans/filescan?scantype=sandbox"
         files = {'file': (file_path.split('/')[-1], open(file_path, 'rb'), file_type)}
 
-        response = self.post(endpoint, params=params, headers=self.headers, files=files, display_output=display_output)
+        response = self.post(endpoint, headers=self.headers, files=files, display_output=display_output)
         return self._handle_response(response)
 
     def get_scan_report(self, jobid, display_output=False):
