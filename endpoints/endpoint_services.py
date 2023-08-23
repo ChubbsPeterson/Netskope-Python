@@ -150,7 +150,7 @@ class Services(BaseClient):
         Get bandwidth control policies list.
         """
         endpoint = "services/bandwidthcontrol/policies/getpolicies"
-        response = self.post(endpoint, json=data, display_output=display_output)
+        response = self.post(endpoint, data=data, display_output=display_output)
         return self._handle_response(response)
 
     def get_bandwidth_control_policy(self, policy_id, display_output=False):
@@ -254,7 +254,7 @@ class Services(BaseClient):
         Get bandwidth control traffic class rule list.
         """
         endpoint = "services/bandwidthcontrol/trafficclassrules/getrules"
-        response = self.post(endpoint, json=data, display_output=display_output)
+        response = self.post(endpoint, data=data, display_output=display_output)
         return self._handle_response(response)
 
     def delete_bandwidth_control_traffic_class_rules(self, data, display_output=False):

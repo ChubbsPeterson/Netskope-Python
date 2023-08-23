@@ -22,5 +22,5 @@ class UbaDataSvc(BaseClient):
         Get single user's confidence index.
         """
         endpoint = "ubadatasvc/user/uci"
-        response = self.post(endpoint, json=data, display_output=display_output)
+        response = self.post(endpoint, data=data, display_output=display_output)
         return self._handle_response(response)
